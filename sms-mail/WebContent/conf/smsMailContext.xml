@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+ 
+<beans>
+
+	<bean id="smsMailServer" class="com.ever.server.SmsMailServer" init-method="start">
+		<property name="appContext">
+			<ref local="appContext"/>
+		</property>
+	</bean>
+	
+	<bean id="omcService" class="com.ever.server.service.OmcService">
+		<property name="baseDao">
+			<ref bean="baseDao"/>
+		</property>
+	</bean>
+	
+	<bean id="cms" class="com.ever.server.sms.cmpp.manager.CmppConnectManager" init-method="start">
+		<property name="appContext">
+			<ref local="appContext"/>
+		</property>
+	</bean>
+
+    <bean id="dbMonitor" class="com.ever.server.thread.DBMonitorThread" init-method="start">
+        <property name="appContext">
+            <ref local="appContext"/>
+        </property>
+    </bean>
+	
+	<bean id="appContext" class="com.ever.server.model.AppContext">
+		<property name="account">
+			<value>evermobile</value>
+		</property>
+		<property name="password">
+			<value>evermobile!@#</value>
+		</property>
+		<property name="smtp">
+			<value>smtp.163.com</value>
+		</property>
+		<property name="port">
+			<value>25</value>
+		</property>
+		<property name="fromAddress">
+			<value>evermobile@163.com</value>
+		</property>
+		<property name="fromName">
+			<value>${mail.fromName}</value>
+		</property>
+		<property name="infoAddress">
+			<value>evermobilesoft.com</value>
+		</property>
+		<property name="subject">
+			<value>${mail.subject}</value>
+		</property>
+		<property name="content">
+			<value>${mail.content.tmpl}</value>
+		</property>
+		<property name="toAddress">
+			<value>${mail.toAddress}</value>
+		</property>
+		<property name="sleepTime">
+			<value>${dbmonitor.sleep.time}</value>
+		</property>
+		<property name="enableEmail">
+			<value>${enable.mail}</value>
+		</property>
+		<property name="enableSms">
+			<value>${enable.sms}</value>
+		</property>
+		<property name="maxThreadPool">
+			<value>${max.threadpool}</value>
+		</property>
+		<property name="multicastIp">
+			<value>${multicast.ip}</value>
+		</property>
+		<property name="multicastPort">
+			<value>${multicast.port}</value>
+		</property>
+		<property name="alarmLevel">
+			<value>${alarm.level}</value>
+		</property>
+		<property name="version">
+			<value>${version}</value>
+		</property>
+		<property name="gwIp">
+			<value>${gw_ip}</value>
+		</property>
+		<property name="gwPort">
+			<value>${gw_port}</value>
+		</property>
+		<property name="gwUser">
+			<value>${gw_user}</value>
+		</property>
+		<property name="gwPassword">
+			<value>${gw_password}</value>
+		</property>
+		<property name="gwIdleTime">
+			<value>${gw_idle_time}</value>
+		</property>
+		<property name="configFile">
+			<value>${config.file}</value>
+		</property>
+        <property name="connectGwInterval">
+            <value>10</value>
+        </property>
+        <property name="alarmId">
+            <value>24,25</value>
+        </property>
+		<property name="omcService">
+			<ref local="omcService"/>
+		</property>
+		<property name="cms">
+			<ref local="cms"/>
+		</property>
+	</bean>
+
+</beans> 
