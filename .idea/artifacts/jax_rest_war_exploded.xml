@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="jax-rest:war exploded">
+    <output-path>$PROJECT_DIR$/jax-rest/target/jax-rest</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="jax-rest" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="D:\Repo\MavenUtils\jax-rest\target/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="jax-rest/web/Web" />
+    </root>
+  </artifact>
+</component>
